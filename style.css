@@ -1,0 +1,15 @@
+#container {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: auto;
+    grid-template-areas: 
+}
+
+.item {
+    border: 1px solid black;
+}
+
+.item:hover {
+    background-color: black;
+    transition: 1s;
+}
