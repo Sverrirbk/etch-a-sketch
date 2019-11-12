@@ -1,15 +1,17 @@
+/* grid setup */
 #container {
     display: grid;
     grid-template-columns: 50px 50px 50px 50px;
     grid-template-rows: auto;
-    grid-template-areas: 
 }
 
+/* Dynamic generated items */
 .item {
     border: 1px solid black;
 }
 
-.item:hover {
+/* Hover effect */
+.hoverItem {
     background-color: black;
-    transition: 1s;
+    transition: 0.5s;
 }
