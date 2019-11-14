@@ -1,30 +1,46 @@
 grid(64); // initialize grid system
+gridItems = document.querySelectorAll(".item");
 
-// get size
+// user input - get size
 var submitSize = document.getElementById('submitSize');
 submitSize.addEventListener('click', gridSize, false); 
 
-// user input - submitting size of grid
+// submitting size of grid and initializing grid creation function
 function gridSize(){
+    gridItems.forEach(item => container.removeChild(item));
     var size = document.getElementById("inputSize").value;
-    console.log(size + " is a good size");
+    size = size * size
     grid(size); // initialize grid system
 }
 
-// creating dynamic grid of divs with unique item
+// creating dynamic grid of divs with unique item names and hover functionality
 function grid(size){
     var container = document.getElementById("container");
     for (var i = 0; i < size; i++) {
-        var temp = "<div class='item' id='item" + i + "' onmouseover='mouseOver()'>Ready!</div>"        
-        container.innerHTML += temp;
+        const temp = document.createElement("div");
+        temp.className = "item";
+        temp.setAttribute("id", "item" + i);
+        temp.setAttribute("onmouseover", "mouseOver()");
+        container.appendChild(temp);      
         console.log("New div ready to roll!");
     }
 }
 
-// mouse over changes color by adding class to generated divs
+// mouse over changes color to black adding css to generated divs
+// possible to add argument that changes color.
 function mouseOver(e) {
-    this.addEventListener("mouseover", console.log(event.target.id));
+    color = "blackItem";
     var temp = event.target.id;
+    this.addEventListener("mouseover", mouseOverColor(temp, color)); 
     console.log("this is temp " + temp);    
-    document.getElementById(temp).classList.add("hoverItem");
+}
+
+
+// makes it 10% more black with every pass
+function mouseOverColor(id, color) {
+    let test = getComputedStyle(document.getElementById(id))
+        .getPropertyValue('opacity');
+    let opacity = Number(test) + 0.1;
+    document.getElementById(id).style
+        .setProperty('opacity', opacity);
 }
