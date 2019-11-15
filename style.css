@@ -1,35 +1,18 @@
 /* grid setup */
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 502702a27851fb5d3cc36ec853d68454a6c4baf4
 #container {
     display: grid;
     margin: auto;
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
-<<<<<<< HEAD
     height: 480px;
     width: 480px;
     border: 1px solid black;
-=======
-    height: 500px;
-    width: 500px;
-    border: 1px solid black;
-
->>>>>>> 502702a27851fb5d3cc36ec853d68454a6c4baf4
 }
 
 /* Dynamic generated items */
 .item {
-<<<<<<< HEAD
     height: 30px;
     width: 30px;
-=======
-    border: 1px solid black;
->>>>>>> 502702a27851fb5d3cc36ec853d68454a6c4baf4
     background-color: black;
     opacity: 0;
 }
