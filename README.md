@@ -9,6 +9,11 @@ Grid creation ready!
 Grid button and input ready!
 Hover effect ready!
 Hover effect shading ready!
+Grid fits into container ready!
 
 Not ready = look
-Not ready = get grid to fit into container.
+
+Optional things;
+On click delete
+Pick color
+Click to fill
