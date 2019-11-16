@@ -1,26 +1,45 @@
 // global variables
-var width = getComputedStyle(document.getElementById("container"))
-    .getPropertyValue('width');
-var height =getComputedStyle(document.getElementById("container"))
-    .getPropertyValue('height');
 var container = document.getElementById("container");
+var width = getComputedStyle(document.getElementById("container"))
+        .getPropertyValue('width');
+var height = getComputedStyle(document.getElementById("container"))
+        .getPropertyValue('height');
+
+// slider variables
+var dimensionsSlider = document.getElementById("dimensionsSlider");
+var dimensionsOutput = document.getElementById("dimensionsOutput");
+
 
 grid(16); // initialize grid system
 
-
 // user input - get size
 var submitSize = document.getElementById('submitSize');
-submitSize.addEventListener('click', gridSize, false); 
+submitSize.addEventListener('click', gridSize, false);
+
+// user input - reset
+var reset =  document.getElementById('resetGrid');
+reset.addEventListener('click', gridSize, false);
 
 // submitting size of grid and initializing grid creation function
-function gridSize(){
-    // start by removing all items from grid
-    gridItems = document.querySelectorAll(".item");
-    gridItems.forEach(item => container.removeChild(item));
+function gridSize() {
     var inputSize = document.getElementById("inputSize").value;
+    resetGrid();
+    setDimensions();
     numberOfRows(inputSize); // set number of rows and columns
     grid(inputSize); // initialize div creation
 
+}
+
+function resetGrid() {
+    gridItems = document.querySelectorAll(".item");
+    gridItems.forEach(item => container.removeChild(item));
+}
+
+setDimensions = function() {
+    container.style.width = width + "px";
+    container.style.height = height + "px";
+    console.log(width);
+    console.log(height);
 }
 
 // number of rows and columns
@@ -74,3 +93,14 @@ function mouseOverColor(id, color) {
     document.getElementById(id).style
         .setProperty('opacity', opacity);
 }
+
+
+
+// slider functions
+dimensionsSlider.oninput = function() {
+    dimensionsOutput.innerHTML = this.value;
+    width = this.value
+    height = this.value;
+    return width, height;
+}
+

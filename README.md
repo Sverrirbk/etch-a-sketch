@@ -10,10 +10,12 @@ Grid button and input ready!
 Hover effect ready!
 Hover effect shading ready!
 Grid fits into container ready!
+Grid dimensions slider ready!
 
-Not ready = look
+50% ready = look
 
 Optional things;
 On click delete
 Pick color
 Click to fill
+Save to JPG

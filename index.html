@@ -2,20 +2,32 @@
 <html>
   <head>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <title>title</title>
+    <title>Pixel skethcer</title>
   </head>
   <body>
+    <header>
+      <p>Pixel sketcher!</p>
+    </header>
+    <content id="content">
       <!-- Get size of grid -->
-      <div>
-        <label>How many rows?</label>
-        <input id="inputSize" type="number" min="2" max="64"></input>
-        <button id="submitSize" type="button">Done</button>
+      <div class="inputDiv">
+        <label>Number of rows and columns?</label>
+        <input id="inputSize" type="number" placeholder="2-64" min="2" max="64"></input>
+        <button id="submitSize" type="button" value="16">Submit</button>
+        <button id="resetGrid" type="button">Reset</button>
       </div>
 
-      <div id="container">
+      <div id="container" class="container">
         <!-- generated contented  here -->
       </div>
-  
+      <div class="slideContainer">
+        <p>Dimension: <span id="dimensionsOutput" value="480">480</span>px</p>
+        <input type="range" class="slider" id="dimensionsSlider" min="80" max="880" value="480">
+      </div>
+    </content>
+    <footer>
+        <p></p>
+    </footer>
   </body>
   <script type="text/javascript" src="script.js"></script>
 </html>
