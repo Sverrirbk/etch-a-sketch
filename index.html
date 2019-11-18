@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+      <link href="https://fonts.googleapis.com/css?family=Bangers|Inknut+Antiqua&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Pixel skethcer</title>
   </head>
   <body>
     <header>
-      <p>Pixel sketcher!</p>
+      <div>
+          <p>Pixel sketcher!</p>
+      </div>
+      
     </header>
     <content id="content">
       <!-- Get size of grid -->
@@ -14,6 +18,8 @@
         <label>Number of rows and columns?</label>
         <input id="inputSize" type="number" placeholder="2-64" min="2" max="64"></input>
         <button id="submitSize" type="button" value="16">Submit</button>
+        <button id="hoverToggle" type="button">Hover</button>
+        <input id="color" type="color" name="color" value="#000000">
         <button id="resetGrid" type="button">Reset</button>
       </div>
 
@@ -21,7 +27,7 @@
         <!-- generated contented  here -->
       </div>
       <div class="slideContainer">
-        <p>Dimension: <span id="dimensionsOutput" value="480">480</span>px</p>
+        <p>Dimensions: <span id="dimensionsOutput" value="480">480</span>px</p>
         <input type="range" class="slider" id="dimensionsSlider" min="80" max="880" value="480">
       </div>
     </content>

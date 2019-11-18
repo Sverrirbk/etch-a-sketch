@@ -9,16 +9,33 @@ var height = getComputedStyle(document.getElementById("container"))
 var dimensionsSlider = document.getElementById("dimensionsSlider");
 var dimensionsOutput = document.getElementById("dimensionsOutput");
 
-
 grid(16); // initialize grid system
 
 // user input - get size
-var submitSize = document.getElementById('submitSize');
-submitSize.addEventListener('click', gridSize, false);
+var submitSize = document.getElementById("submitSize");
+submitSize.addEventListener("click", gridSize, false);
+
+// user input - toggle hover
+var hoverState = true;
+var hoverToggle = document.getElementById("hoverToggle");
+hoverToggle = hoverToggle.addEventListener("click", hoverOnOff, true);
+
+
+function hoverOnOff() {
+    if (hoverState == true)
+    {
+        hoverState = !hoverState;
+    }
+    else {
+        hoverState = !hoverState
+    }
+    console.log(hoverState);
+      }
+
 
 // user input - reset
-var reset =  document.getElementById('resetGrid');
-reset.addEventListener('click', gridSize, false);
+var reset =  document.getElementById("resetGrid");
+reset.addEventListener("click", gridSize, false);
 
 // submitting size of grid and initializing grid creation function
 function gridSize() {
@@ -59,6 +76,7 @@ function grid(inputSize){
         temp.className = "item";
         temp.setAttribute("id", "item" + i);
         temp.setAttribute("onmouseover", "mouseOver()");
+        temp.setAttribute("onmousedown", "mouseClick()");
         temp.style.height = (divSize + "px");
         temp.style.width = (divSize + "px");
         container.appendChild(temp);      
@@ -75,26 +93,45 @@ function setItemSize(size) {
     return(divSize);    
 }
 
-// mouse over changes color to black adding css to generated divs
-// possible to add argument that changes color.
-function mouseOver(e) {
-    color = "blackItem";
+// mouse click adds color, ignores opacity level
+
+function mouseClick (id) {
     var temp = event.target.id;
-    this.addEventListener("mouseover", mouseOverColor(temp, color)); 
-    console.log("this is temp " + temp);    
+    this.addEventListener("onmousedown", changeColor(temp)); 
+    document.getElementById(temp).style
+        .setProperty('opacity', "1");
+    
 }
 
+// mouse over changes color to black adding css to generated divs
+// possible to add argument that changes color.
+function mouseOver() {
+    if (hoverState == true) {
+        var temp = event.target.id;
+         this.addEventListener("mouseover", mouseOverColor(temp)); 
+        console.log("this is temp " + temp);  
+    }
+    else {
+        return;
+    }
+}
 
-// makes it 10% more black with every pass
-function mouseOverColor(id, color) {
+// makes it 10% more dark with every use
+function mouseOverColor(id) {
+    changeColor(id);
     let test = getComputedStyle(document.getElementById(id))
         .getPropertyValue('opacity');
     let opacity = Number(test) + 0.1;
     document.getElementById(id).style
         .setProperty('opacity', opacity);
+    
 }
 
-
+// color
+function changeColor(id) { 
+    document.getElementById(id).style.backgroundColor 
+        = document.getElementById( "color").value; 
+} 
 
 // slider functions
 dimensionsSlider.oninput = function() {
